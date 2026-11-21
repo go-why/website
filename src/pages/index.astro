@@ -1,5 +1,26 @@
 ---
-export function GET() {
-  return Astro.redirect('/fr/');
-}
+// Page racine : redirige vers la langue du navigateur (fr / en), sinon en.
+// Le site est statique → la détection se fait côté client (navigator.language).
 ---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Why</title>
+    <script>
+      // Détecte la langue du navigateur parmi les locales supportées, sinon en.
+      const locales = ['fr', 'en'];
+      const fallback = 'en';
+      const nav = (navigator.languages || [navigator.language || ''])
+        .map((l) => String(l).toLowerCase().split('-')[0]);
+      const match = nav.find((l) => locales.includes(l));
+      window.location.replace(`/${match || fallback}/`);
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
+  </head>
+  <body style="font-family: system-ui, sans-serif; padding: 2rem; max-width: 32rem; margin: auto;">
+    <p>Redirection…</p>
+    <p><a href="/en/">English</a> · <a href="/fr/">Français</a></p>
+  </body>
+</html>
