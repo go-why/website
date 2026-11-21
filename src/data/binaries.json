@@ -1,6 +1,6 @@
 {
-  "version": "b447528-dirty",
-  "generatedAt": "2026-11-21T12:05:52Z",
+  "version": "4099a4e-dirty",
+  "generatedAt": "2026-11-21T14:00:56Z",
   "binaries": [
     {
       "name": "why-darwin-amd64.zip",
@@ -8,8 +8,8 @@
       "tool": "why",
       "os": "darwin",
       "arch": "amd64",
-      "sizeBytes": 3457838,
-      "sha256": "8a806e346f51729a6a0da4037c956ed5bcfed8f5d4b6fc305d854df1c697dc10"
+      "sizeBytes": 3457816,
+      "sha256": "f381085b51ade71acf9cb6a309bf31a7b5ac744314aaded3757f55bf0c4a0eab"
     },
     {
       "name": "why-darwin-arm64.zip",
@@ -17,8 +17,8 @@
       "tool": "why",
       "os": "darwin",
       "arch": "arm64",
-      "sizeBytes": 3160912,
-      "sha256": "466ad9e4d4b57e6e663c88e3bdbc2b07eb6cf74b93cc0734c3c1dc1772716393"
+      "sizeBytes": 3160910,
+      "sha256": "6b827eff13b5ecc7f0180471cfd72c47d60936960da89cbe1a8bb3418f08773f"
     },
     {
       "name": "why-linux-amd64.zip",
@@ -26,8 +26,8 @@
       "tool": "why",
       "os": "linux",
       "arch": "amd64",
-      "sizeBytes": 3417210,
-      "sha256": "1eb1e8857e992d4cab3ffdc64addc2f2ae5a2b6d937a67c9be605b9e6f4f44b0"
+      "sizeBytes": 3417211,
+      "sha256": "90664a4cd7c972532d614d6a1af8edfda0d9b65da37ddf5d777f029eb4c6e508"
     },
     {
       "name": "why-linux-arm64.zip",
@@ -35,8 +35,8 @@
       "tool": "why",
       "os": "linux",
       "arch": "arm64",
-      "sizeBytes": 3061346,
-      "sha256": "cbc8edb3db71f5ff4844e7a2d76df9022c7f805b3d58f88815cdada395d85107"
+      "sizeBytes": 3061336,
+      "sha256": "afe370fd67d03b39ea9fc9a7e53ba38f0b3182ad6a4e25631bfd2c239ee82879"
     },
     {
       "name": "why-lsp-darwin-amd64.zip",
@@ -44,8 +44,8 @@
       "tool": "why-lsp",
       "os": "darwin",
       "arch": "amd64",
-      "sizeBytes": 1797102,
-      "sha256": "acc58e7a4024e33102d15f994f08c50b2abd190312a598d7c5967b020c62d3c6"
+      "sizeBytes": 1797093,
+      "sha256": "a0f5ba93c391fe72ff6a9f189ddfd66c2e0b6a65d4c98fe2ec9da6b3ece11e94"
     },
     {
       "name": "why-lsp-darwin-arm64.zip",
@@ -53,8 +53,8 @@
       "tool": "why-lsp",
       "os": "darwin",
       "arch": "arm64",
-      "sizeBytes": 1643838,
-      "sha256": "b9a2da629f31faa0c63761f5b3f13b1359b1a01b63366ce66fd14892df474eec"
+      "sizeBytes": 1643841,
+      "sha256": "1f4a7192e019d64dcbe33b21d92b69a7ce402df4ef7298a09235855fc678267f"
     },
     {
       "name": "why-lsp-linux-amd64.zip",
@@ -62,8 +62,8 @@
       "tool": "why-lsp",
       "os": "linux",
       "arch": "amd64",
-      "sizeBytes": 1783161,
-      "sha256": "26663a67a9aa67cd61b4f640cb293b497aa92480c7fa5a718ffe8518d346da72"
+      "sizeBytes": 1783146,
+      "sha256": "272aa291411b4681554fdb5f8809543f032bf50d1d45f472858588e50d44bc8c"
     },
     {
       "name": "why-lsp-linux-arm64.zip",
@@ -71,8 +71,8 @@
       "tool": "why-lsp",
       "os": "linux",
       "arch": "arm64",
-      "sizeBytes": 1597025,
-      "sha256": "4534187d1a754670eb85c20a806edd2e4b296564411e8fb3275641973f5e8c65"
+      "sizeBytes": 1597022,
+      "sha256": "dc382f042fb8186df982fa915fd605d87e7462901b0398c1c90beb82ffbb69f9"
     },
     {
       "name": "why-lsp-windows-amd64.zip",
@@ -80,8 +80,8 @@
       "tool": "why-lsp",
       "os": "windows",
       "arch": "amd64",
-      "sizeBytes": 1832608,
-      "sha256": "96c012b7f1bd479abefcd0a5b8c414ceae53aac29e9a8f1cbb7f9c682ba1f7fc"
+      "sizeBytes": 1832595,
+      "sha256": "87a09593b2fa97db34976ab0636b1a755d1ff4315e27b91ff937e797ccbe29b7"
     },
     {
       "name": "why-lsp-windows-arm64.zip",
@@ -89,8 +89,8 @@
       "tool": "why-lsp",
       "os": "windows",
       "arch": "arm64",
-      "sizeBytes": 1629094,
-      "sha256": "faaad4f2614c89251876d95ba95de87b97896d1babd1cb62da58114c8d15bcf4"
+      "sizeBytes": 1629081,
+      "sha256": "429f7690c6bf03a6dd9ae320b030ca44088077291ed05a096b1c3d623aa9b919"
     },
     {
       "name": "why-windows-amd64.zip",
@@ -98,8 +98,8 @@
       "tool": "why",
       "os": "windows",
       "arch": "amd64",
-      "sizeBytes": 3501118,
-      "sha256": "bd5306d442f84a37db840489f705a0e3bfb3f3ee88aa37d94f1961ef0bc20df9"
+      "sizeBytes": 3501113,
+      "sha256": "bfa4abcc2a759e4db0ff4505edc7366049d4025e588f14d5a32702d467625535"
     },
     {
       "name": "why-windows-arm64.zip",
@@ -107,8 +107,8 @@
       "tool": "why",
       "os": "windows",
       "arch": "arm64",
-      "sizeBytes": 3108253,
-      "sha256": "2888dedf31399a00cba3f1ad97a48cab0ff953eb960c23716a726641e107bd82"
+      "sizeBytes": 3108243,
+      "sha256": "846305352d4407c7b6dc65eaa02d489ad3a82dfa3776cd543d6a5980a5bcab17"
     }
   ]
 }
