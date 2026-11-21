@@ -1,0 +1,114 @@
+{
+  "version": "b447528-dirty",
+  "generatedAt": "2026-11-21T12:05:52Z",
+  "binaries": [
+    {
+      "name": "why-darwin-amd64.zip",
+      "binary": "why",
+      "tool": "why",
+      "os": "darwin",
+      "arch": "amd64",
+      "sizeBytes": 3457838,
+      "sha256": "8a806e346f51729a6a0da4037c956ed5bcfed8f5d4b6fc305d854df1c697dc10"
+    },
+    {
+      "name": "why-darwin-arm64.zip",
+      "binary": "why",
+      "tool": "why",
+      "os": "darwin",
+      "arch": "arm64",
+      "sizeBytes": 3160912,
+      "sha256": "466ad9e4d4b57e6e663c88e3bdbc2b07eb6cf74b93cc0734c3c1dc1772716393"
+    },
+    {
+      "name": "why-linux-amd64.zip",
+      "binary": "why",
+      "tool": "why",
+      "os": "linux",
+      "arch": "amd64",
+      "sizeBytes": 3417210,
+      "sha256": "1eb1e8857e992d4cab3ffdc64addc2f2ae5a2b6d937a67c9be605b9e6f4f44b0"
+    },
+    {
+      "name": "why-linux-arm64.zip",
+      "binary": "why",
+      "tool": "why",
+      "os": "linux",
+      "arch": "arm64",
+      "sizeBytes": 3061346,
+      "sha256": "cbc8edb3db71f5ff4844e7a2d76df9022c7f805b3d58f88815cdada395d85107"
+    },
+    {
+      "name": "why-lsp-darwin-amd64.zip",
+      "binary": "why-lsp",
+      "tool": "why-lsp",
+      "os": "darwin",
+      "arch": "amd64",
+      "sizeBytes": 1797102,
+      "sha256": "acc58e7a4024e33102d15f994f08c50b2abd190312a598d7c5967b020c62d3c6"
+    },
+    {
+      "name": "why-lsp-darwin-arm64.zip",
+      "binary": "why-lsp",
+      "tool": "why-lsp",
+      "os": "darwin",
+      "arch": "arm64",
+      "sizeBytes": 1643838,
+      "sha256": "b9a2da629f31faa0c63761f5b3f13b1359b1a01b63366ce66fd14892df474eec"
+    },
+    {
+      "name": "why-lsp-linux-amd64.zip",
+      "binary": "why-lsp",
+      "tool": "why-lsp",
+      "os": "linux",
+      "arch": "amd64",
+      "sizeBytes": 1783161,
+      "sha256": "26663a67a9aa67cd61b4f640cb293b497aa92480c7fa5a718ffe8518d346da72"
+    },
+    {
+      "name": "why-lsp-linux-arm64.zip",
+      "binary": "why-lsp",
+      "tool": "why-lsp",
+      "os": "linux",
+      "arch": "arm64",
+      "sizeBytes": 1597025,
+      "sha256": "4534187d1a754670eb85c20a806edd2e4b296564411e8fb3275641973f5e8c65"
+    },
+    {
+      "name": "why-lsp-windows-amd64.zip",
+      "binary": "why-lsp.exe",
+      "tool": "why-lsp",
+      "os": "windows",
+      "arch": "amd64",
+      "sizeBytes": 1832608,
+      "sha256": "96c012b7f1bd479abefcd0a5b8c414ceae53aac29e9a8f1cbb7f9c682ba1f7fc"
+    },
+    {
+      "name": "why-lsp-windows-arm64.zip",
+      "binary": "why-lsp.exe",
+      "tool": "why-lsp",
+      "os": "windows",
+      "arch": "arm64",
+      "sizeBytes": 1629094,
+      "sha256": "faaad4f2614c89251876d95ba95de87b97896d1babd1cb62da58114c8d15bcf4"
+    },
+    {
+      "name": "why-windows-amd64.zip",
+      "binary": "why.exe",
+      "tool": "why",
+      "os": "windows",
+      "arch": "amd64",
+      "sizeBytes": 3501118,
+      "sha256": "bd5306d442f84a37db840489f705a0e3bfb3f3ee88aa37d94f1961ef0bc20df9"
+    },
+    {
+      "name": "why-windows-arm64.zip",
+      "binary": "why.exe",
+      "tool": "why",
+      "os": "windows",
+      "arch": "arm64",
+      "sizeBytes": 3108253,
+      "sha256": "2888dedf31399a00cba3f1ad97a48cab0ff953eb960c23716a726641e107bd82"
+    }
+  ]
+}

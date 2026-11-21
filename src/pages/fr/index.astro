@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Doc from '../../layouts/Doc.astro';
+
+const norm = (id: string) => id.replace(/\/index(\.md)?$/, '').replace(/\.md$/, '');
+const entry = (await getCollection('docs')).find((d) => norm(d.id) === 'fr');
+if (!entry) throw new Error("page 'fr/index' introuvable");
+const { Content } = await render(entry);
+---
+<Doc locale="fr" title={entry.data.title}>
+  <div class="callout">
+    <strong>Essayer</strong>
+    <p>
+      Le tour s'exécute dans le navigateur : chaque page lance un fragment et montre le code de sortie, ou le diagnostic.
+      Le projet n'est pas open source pour le moment. Une question, ou un intérêt pour le code :
+      <a href="mailto:contact@noematic.eu">contact@noematic.eu</a>.
+    </p>
+    <a class="btn" href="https://play.why.noematic.eu">Ouvrir le tour</a>
+    <a class="btn" href="https://defi.why.noematic.eu">Les défis</a>
+  </div>
+  <div class="callout">
+    <strong>Télécharger</strong>
+    <p>
+      Binaire natif, compilé statiquement, sans runtime — un fichier <code>.zip</code> par système et par architecture
+      (macOS, Linux, Windows · arm64, amd64), pour le compilateur <code>why</code> et le serveur de langage <code>why-lsp</code>.
+    </p>
+    <a class="btn" href="/fr/telechargement">Voir les binaires</a>
+  </div>
+  <div class="callout">
+    <strong>L'article</strong>
+    <p>
+      L'article présente le modèle, l'analyse interprocédurale des effets de stockage et un premier état des mesures : 76 programmes de non-régression passent, et la médiane des rapports Why/C sur 46 noyaux de calcul entier est d'environ 1,01.
+    </p>
+    <a class="btn" href="/paper/why-overview-fr.pdf" download>Télécharger le papier (PDF)</a>
+  </div>
+  <Content />
+</Doc>

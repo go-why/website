@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Doc from '../../layouts/Doc.astro';
+
+const norm = (id: string) => id.replace(/\/index(\.md)?$/, '').replace(/\.md$/, '');
+const entry = (await getCollection('docs')).find((d) => norm(d.id) === 'en');
+if (!entry) throw new Error("page 'en/index' introuvable");
+const { Content } = await render(entry);
+---
+<Doc locale="en" title={entry.data.title}>
+  <div class="callout">
+    <strong>Try it</strong>
+    <p>
+      The tour runs in the browser: each page launches a fragment and shows the exit code, or the diagnostic.
+      The project is not open source for now. A question, or an interest in the code:
+      <a href="mailto:contact@noematic.eu">contact@noematic.eu</a>.
+    </p>
+    <a class="btn" href="https://play.why.noematic.eu">Open the tour</a>
+    <a class="btn" href="https://defi.why.noematic.eu">Challenges</a>
+  </div>
+  <div class="callout">
+    <strong>Download</strong>
+    <p>
+      Native binary, statically compiled, no runtime — one <code>.zip</code> per system and architecture
+      (macOS, Linux, Windows · arm64, amd64), for the <code>why</code> compiler and the <code>why-lsp</code> language server.
+    </p>
+    <a class="btn" href="/en/download">See the binaries</a>
+  </div>
+  <div class="callout">
+    <strong>The paper</strong>
+    <p>
+      The paper presents the model, the interprocedural analysis of storage effects, and a first state of the measurements: 76 regression programs pass, and the median Why/C ratio across 46 integer compute kernels is about 1.01.
+    </p>
+    <a class="btn" href="/paper/why-overview-en.pdf" download>Download the paper (PDF)</a>
+  </div>
+  <Content />
+</Doc>
