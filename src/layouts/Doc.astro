@@ -42,6 +42,18 @@ const active = (u: string) => cur === u || cur.startsWith(u + '/');
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title === siteTitle ? siteTitle : `${title} · ${siteTitle}`}</title>
     <meta name="description" content="Why — langage, spec, référence et performance." />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161514" />
+    <script is:inline>
+      // Thème : applique la préférence sauvegardée avant le premier rendu (évite le flash).
+      // « auto » (pas d'attribut) suit prefers-color-scheme via le CSS.
+      (function () {
+        try {
+          var t = localStorage.getItem('why-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <header class="top">
@@ -59,6 +71,9 @@ const active = (u: string) => cur === u || cur.startsWith(u + '/');
         <a class="dl" href={dlUrl}>
           {locale === 'fr' ? '⬇ Télécharger' : '⬇ Download'}
         </a>
+        <button id="theme-toggle" class="theme" type="button" aria-label="Thème">
+          <span class="theme-ico" aria-hidden="true"></span>
+        </button>
         <nav class="lang" aria-label="langue">
           <a href="/fr/" class={locale === 'fr' ? 'on' : ''}>Français</a>
           <a href="/en/" class={locale === 'en' ? 'on' : ''}>English</a>
@@ -88,5 +103,48 @@ const active = (u: string) => cur === u || cur.startsWith(u + '/');
       <span class="sep" aria-hidden="true">·</span>
       <a href="mailto:contact@noematic.eu">contact@noematic.eu</a>
     </footer>
+    <script is:inline>
+      // Bascule du thème : auto → clair → sombre. La préférence est mémorisée
+      // (localStorage « why-theme ») ; « auto » suit le système via le CSS.
+      (function () {
+        var KEY = 'why-theme';
+        var ORDER = ['auto', 'light', 'dark'];
+        var root = document.documentElement;
+        var btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+        var fr = root.getAttribute('lang') === 'fr';
+        var LABELS = fr
+          ? { auto: 'Thème : automatique (suit le système)', light: 'Thème : clair', dark: 'Thème : sombre' }
+          : { auto: 'Theme: auto (follows the system)', light: 'Theme: light', dark: 'Theme: dark' };
+        var ICONS = {
+          auto: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>',
+          light: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg>',
+          dark: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'
+        };
+        function current() {
+          var s = null;
+          try { s = localStorage.getItem(KEY); } catch (e) {}
+          return ORDER.indexOf(s) !== -1 ? s : 'auto';
+        }
+        function render() {
+          var t = current();
+          if (t === 'auto') root.removeAttribute('data-theme');
+          else root.setAttribute('data-theme', t);
+          var ico = btn.querySelector('.theme-ico');
+          if (ico) ico.innerHTML = ICONS[t];
+          btn.setAttribute('aria-label', LABELS[t]);
+          btn.setAttribute('title', LABELS[t]);
+        }
+        btn.addEventListener('click', function () {
+          var next = ORDER[(ORDER.indexOf(current()) + 1) % ORDER.length];
+          try {
+            if (next === 'auto') localStorage.removeItem(KEY);
+            else localStorage.setItem(KEY, next);
+          } catch (e) {}
+          render();
+        });
+        render();
+      })();
+    </script>
   </body>
 </html>

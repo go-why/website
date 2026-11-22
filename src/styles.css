@@ -1,13 +1,66 @@
 :root {
+  color-scheme: light;
   --fg: #1a1a1a;
   --muted: #6b6b6b;
   --line: #e3e3e3;
   --bg: #ffffff;
   --bg-soft: #f6f6f5;
+  --bg-header: rgba(255, 255, 255, 0.92);
   --accent: #b5441f;
+  --accent-strong: #8e3418;
+  --accent-text: #ffffff;
   --code-bg: #f4f3f1;
   --code-fg: #2b2b2b;
+  --text-2: #333333;
   --maxw: 72rem;
+}
+
+/* Thème sombre : forcé (data-theme="dark") ou automatique selon le système. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --fg: #e6e2dd;
+  --muted: #9a948c;
+  --line: #2e2b28;
+  --bg: #161514;
+  --bg-soft: #1f1d1b;
+  --bg-header: rgba(22, 21, 20, 0.92);
+  --accent: #e06a3f;
+  --accent-strong: #ef8051;
+  --accent-text: #1a120d;
+  --code-bg: #211f1d;
+  --code-fg: #d8d2ca;
+  --text-2: #cfc9c1;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --fg: #e6e2dd;
+    --muted: #9a948c;
+    --line: #2e2b28;
+    --bg: #161514;
+    --bg-soft: #1f1d1b;
+    --bg-header: rgba(22, 21, 20, 0.92);
+    --accent: #e06a3f;
+    --accent-strong: #ef8051;
+    --accent-text: #1a120d;
+    --code-bg: #211f1d;
+    --code-fg: #d8d2ca;
+    --text-2: #cfc9c1;
+  }
+}
+
+/* Accessibilité : focus clavier toujours visible. */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Transition douce lors du changement de thème (désactivée si le mouvement est réduit). */
+@media (prefers-reduced-motion: no-preference) {
+  body, .top, .nav a, .nav li.dl-item a, .callout, .foot, pre, th, td,
+  .play, .defi, .paper, .dl, .lang a, .theme, .dl-btn, .callout a.btn {
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -50,7 +103,7 @@ th { background: var(--bg-soft); font-weight: 600; }
 blockquote {
   margin: 1rem 0; padding: 0.2rem 1rem;
   border-left: 3px solid var(--accent);
-  background: var(--bg-soft); color: #333;
+  background: var(--bg-soft); color: var(--text-2);
 }
 blockquote p { margin: 0.4em 0; }
 hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
@@ -60,7 +113,7 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
   padding: 0.7rem 1.2rem;
   border-bottom: 1px solid var(--line);
-  position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);
+  position: sticky; top: 0; background: var(--bg-header); backdrop-filter: blur(6px);
   z-index: 10;
 }
 .brand { font-weight: 700; font-size: 1.15rem; color: var(--fg); letter-spacing: 0.02em; }
@@ -74,28 +127,37 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
 .top-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; }
 .play {
   padding: 0.2rem 0.7rem; border: 1px solid var(--accent); border-radius: 999px;
-  color: #fff; font-size: 0.85rem; font-weight: 600; background: var(--accent);
+  color: var(--accent-text); font-size: 0.85rem; font-weight: 600; background: var(--accent);
   white-space: nowrap;
 }
-.play:hover { text-decoration: none; background: #8e3418; }
+.play:hover { text-decoration: none; background: var(--accent-strong); }
 .defi {
   padding: 0.2rem 0.7rem; border: 1px solid var(--accent); border-radius: 999px;
   color: var(--accent); font-size: 0.85rem; font-weight: 600; background: var(--bg-soft);
   white-space: nowrap;
 }
-.defi:hover { text-decoration: none; background: var(--accent); color: #fff; }
+.defi:hover { text-decoration: none; background: var(--accent); color: var(--accent-text); }
 .paper {
   padding: 0.2rem 0.6rem; border: 1px solid var(--accent); border-radius: 999px;
   color: var(--accent); font-size: 0.85rem; font-weight: 600; background: var(--bg-soft);
   white-space: nowrap;
 }
-.paper:hover { text-decoration: none; background: var(--accent); color: #fff; }
+.paper:hover { text-decoration: none; background: var(--accent); color: var(--accent-text); }
 .dl {
   padding: 0.2rem 0.6rem; border: 1px solid var(--accent); border-radius: 999px;
   color: var(--accent); font-size: 0.85rem; font-weight: 600; background: var(--bg-soft);
   white-space: nowrap;
 }
-.dl:hover { text-decoration: none; background: var(--accent); color: #fff; }
+.dl:hover { text-decoration: none; background: var(--accent); color: var(--accent-text); }
+
+.theme {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem; padding: 0;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: var(--bg-soft); color: var(--fg);
+  cursor: pointer;
+}
+.theme:hover { border-color: var(--accent); color: var(--accent); }
 
 /* callout (article / paper) */
 .callout {
@@ -109,7 +171,7 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
   border: 1px solid var(--accent); border-radius: 999px;
   color: var(--accent); font-weight: 600; font-size: 0.9rem;
 }
-.callout a.btn:hover { background: var(--accent); color: #fff; text-decoration: none; }
+.callout a.btn:hover { background: var(--accent); color: var(--accent-text); text-decoration: none; }
 
 /* layout */
 .wrap {
@@ -128,7 +190,7 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
 .nav li.dl-item a { color: var(--accent); font-weight: 600; border-left: 2px solid var(--accent); padding-left: 0.7rem; }
 .nav li.dl-item a.on { background: var(--bg-soft); }
 .content { min-width: 0; }
-.lead { font-size: 1.12rem; color: #333; }
+.lead { font-size: 1.12rem; color: var(--text-2); }
 .hint { color: var(--muted); font-size: 0.9rem; }
 .meta { color: var(--muted); font-size: 0.85rem; margin-top: 1.2rem; }
 .meta code { background: var(--code-bg); }
@@ -145,7 +207,7 @@ table.dl-table .act { text-align: right; white-space: nowrap; }
   border: 1px solid var(--accent); border-radius: 999px;
   color: var(--accent); font-weight: 600; font-size: 0.85rem;
 }
-.dl-btn:hover { background: var(--accent); color: #fff; text-decoration: none; }
+.dl-btn:hover { background: var(--accent); color: var(--accent-text); text-decoration: none; }
 
 /* footer */
 .foot {

@@ -8,6 +8,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Why</title>
+    <script is:inline>
+      // Thème : applique la préférence sauvegardée avant le premier rendu.
+      (function () {
+        try {
+          var t = localStorage.getItem('why-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <style is:inline>
+      :root { color-scheme: light; }
+      :root[data-theme="dark"] { color-scheme: dark; }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) { color-scheme: dark; }
+      }
+    </style>
     <script>
       // Détecte la langue du navigateur parmi les locales supportées, sinon en.
       const locales = ['fr', 'en'];
