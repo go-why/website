@@ -116,7 +116,8 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
   position: sticky; top: 0; background: var(--bg-header); backdrop-filter: blur(6px);
   z-index: 10;
 }
-.brand { font-weight: 700; font-size: 1.15rem; color: var(--fg); letter-spacing: 0.02em; }
+.brand { font-weight: 700; font-size: 1.15rem; color: var(--fg); letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 0.45rem; }
+.brand-ico { border-radius: 4px; flex-shrink: 0; }
 .lang { display: flex; gap: 0.4rem; }
 .lang a {
   padding: 0.2rem 0.6rem; border: 1px solid var(--line); border-radius: 999px;
@@ -213,13 +214,31 @@ table.dl-table .act { text-align: right; white-space: nowrap; }
 .foot {
   border-top: 1px solid var(--line);
   padding: 1.2rem; text-align: center; color: var(--muted); font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.3rem;
 }
 .foot a { color: var(--muted); }
 .foot .sep { margin: 0 0.4rem; }
+.foot-mascot img { border-radius: 3px; vertical-align: middle; margin-right: 0.3rem; }
+
+/* hero (index) */
+.hero {
+  display: flex; align-items: center; gap: 2rem;
+  margin: 1.5rem 0 2rem; padding: 1.2rem 1.5rem;
+  border: 1px solid var(--line); border-radius: 12px;
+  background: var(--bg-soft);
+}
+.hero-img {
+  width: 140px; height: auto; border-radius: 8px;
+  flex-shrink: 0;
+}
+.hero-text { min-width: 0; }
+.hero-text h1 { margin: 0 0 0.4em; font-size: 2.2rem; }
+.hero-text .lead { margin: 0; font-size: 1.05rem; color: var(--text-2); }
 
 @media (max-width: 640px) {
-  .wrap { grid-template-columns: 1fr; gap: 1rem; }
-  .nav { position: static; }
-  .nav ul { display: flex; flex-wrap: wrap; gap: 0.2rem 0.6rem; }
-  .nav li.sub a { padding-left: 0.5rem; }
+  .hero { flex-direction: column; text-align: center; padding: 1rem; }
+  .hero-img { width: 110px; }
+  .hero-text h1 { font-size: 1.8rem; }
 }
+
+

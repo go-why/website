@@ -42,6 +42,7 @@ const active = (u: string) => cur === u || cur.startsWith(u + '/');
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title === siteTitle ? siteTitle : `${title} · ${siteTitle}`}</title>
     <meta name="description" content="Why — langage, spec, référence et performance." />
+    <link rel="icon" type="image/jpeg" href="/mascot-icon.jpg" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161514" />
     <script is:inline>
@@ -57,7 +58,10 @@ const active = (u: string) => cur === u || cur.startsWith(u + '/');
   </head>
   <body>
     <header class="top">
-      <a class="brand" href={`/${locale}/`}>{siteTitle}</a>
+      <a class="brand" href={`/${locale}/`}>
+        <img class="brand-ico" src="/mascot-icon.jpg" alt="" width="22" height="22" />
+        {siteTitle}
+      </a>
       <div class="top-actions">
         <a class="play" href="https://play.why.noematic.eu">
           {locale === 'fr' ? 'Essayer le tour' : 'Try the tour'}
@@ -99,6 +103,7 @@ const active = (u: string) => cur === u || cur.startsWith(u + '/');
       </main>
     </div>
     <footer class="foot">
+      <span class="foot-mascot" aria-hidden="true"><img src="/mascot-icon.jpg" alt="" width="20" height="20" /></span>
       <span>{siteTitle} — <a href={`/${locale}/`}>{langLabel}</a></span>
       <span class="sep" aria-hidden="true">·</span>
       <a href="mailto:contact@noematic.eu">contact@noematic.eu</a>

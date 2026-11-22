@@ -8,6 +8,14 @@ if (!entry) throw new Error("page 'en/index' introuvable");
 const { Content } = await render(entry);
 ---
 <Doc locale="en" title={entry.data.title}>
+  <div class="hero">
+    <img class="hero-img" src="/mascot.jpg" alt="Cream ermine mascot" width="220" height="330" loading="eager" />
+    <div class="hero-text">
+      <h1>Why</h1>
+      <p class="lead">A small, fast language for systems programming.
+      Statically compiled, no runtime — one binary, ready to go.</p>
+    </div>
+  </div>
   <div class="callout">
     <strong>Try it</strong>
     <p>
