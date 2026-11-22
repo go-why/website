@@ -1,0 +1,21 @@
+// arena.wc — le bloc arena, a.make, la tranche, la fenêtre.
+// produit des paires (i, i*2) dans l'arène, somme des valeurs, plus la fenêtre.
+
+func doubler(a arena, n int) []int {
+  xs := a.make([]int, n)
+  i := 0
+  for i < n {
+    xs[i] = (i + 1) * 2
+    i = i + 1
+  }
+  return xs
+}
+
+func main() int {
+  arena doc {
+    xs := doubler(doc, 3) // [2, 4, 6]
+    w := xs[1:3]          // fenêtre [4, 6]
+    s := xs[0] + xs[1] + xs[2]
+    return s + len(w)     // 12 + 2 = 14
+  }
+}

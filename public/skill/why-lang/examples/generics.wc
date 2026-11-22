@@ -1,0 +1,21 @@
+// generics.wc — struct générique instancié en Pile[int], méthode qui reprend [T].
+
+struct Pile[T] { data []T, n int }
+
+func (me *Pile[T]) pousser(a arena, v T) {
+  me.data = a.append(me.data, v)
+  me.n = len(me.data)
+}
+
+func (me Pile[T]) tete() T {
+  return me.data[0]
+}
+
+func main() int {
+  arena a {
+    p := Pile[int]
+    p.pousser(a, 40)
+    p.pousser(a, 2)
+    return p.tete() + p.n // 40 + 2 = 42
+  }
+}

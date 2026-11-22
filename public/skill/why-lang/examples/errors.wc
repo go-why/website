@@ -1,0 +1,30 @@
+// errors.wc — (T, error), or return, comparaison avec ==.
+// `or return` n'est légal que dans une fonction qui rend error (ou (T, error)).
+
+func lire() (int, error) {
+  return 40
+}
+
+func total() (int, error) {
+  n := lire() or return
+  return n + 2
+}
+
+func run() error {
+  n := total() or return
+  if n != 42 {
+    return error("non")
+  }
+  return nil
+}
+
+func main() int {
+  e := run()
+  if e == nil {
+    return 42
+  }
+  if e == error("non") {
+    return 1
+  }
+  return 2
+}

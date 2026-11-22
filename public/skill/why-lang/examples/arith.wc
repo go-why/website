@@ -1,0 +1,22 @@
+// arith.wc — fonctions, flux de contrôle, le résultat est le code de sortie.
+// somme des entiers impairs <= 9 = 1+3+5+7+9 = 25.
+
+func impair(n int) bool {
+  return n % 2 == 1
+}
+
+func sommeImpairs(n int) int {
+  s := 0
+  i := 1
+  for i <= n {
+    if impair(i) {
+      s = s + i
+    }
+    i = i + 2
+  }
+  return s
+}
+
+func main() int {
+  return sommeImpairs(9) // 25
+}

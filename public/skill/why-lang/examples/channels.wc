@@ -1,0 +1,50 @@
+// channels.wc — canal borné, thread, receive, select.
+
+func ajouter(c *chan[int], n int) error {
+  c.send(n) or return
+  return nil
+}
+
+func somme() error {
+  c := chan[int](0)
+  thread ajouter(c, 20)
+  thread ajouter(c, 22)
+  a := c.receive() or return
+  b := c.receive() or return
+  if a + b != 42 {
+    return error("non")
+  }
+  return nil
+}
+
+func sel(u *chan[int], r *chan[int]) (int, error) {
+  select {
+  case v := u.receive() {
+    return v
+  }
+  case v := r.receive() {
+    return v
+  }
+  } or return
+}
+
+func choisir() error {
+  u := chan[int](1)
+  r := chan[int](1)
+  u.send(7) or return
+  v := sel(u, r) or return
+  if v != 7 {
+    return error("non")
+  }
+  return nil
+}
+
+func main() int {
+  if somme() != nil {
+    return 1
+  }
+  if choisir() != nil {
+    return 2
+  }
+  return 42
+}

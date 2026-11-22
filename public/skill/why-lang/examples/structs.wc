@@ -1,0 +1,34 @@
+// structs.wc — struct, méthode, interface, composition par champ nommé.
+
+interface Taille {
+  taille() int
+}
+
+struct Compteur { n int }
+
+func (me Compteur) taille() int {
+  return me.n
+}
+
+struct Paire { a, b int }
+
+func (me Paire) taille() int {
+  return me.a + me.b
+}
+
+struct Boite { c Compteur }
+
+func lire(t Taille) int {
+  return t.taille()
+}
+
+func main() int {
+  c := Compteur
+  c.n = 20
+  p := Paire
+  p.a = 11
+  p.b = 11
+  b := Boite
+  b.c.n = 1
+  return lire(c) + lire(p) + b.c.taille() // 20 + 22 + 1 = 43
+}

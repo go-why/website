@@ -26,6 +26,13 @@ const rowsFor = (tool) => {
 };
 const fmt = (n) => (n >= 1048576 ? (n / 1048576).toFixed(1).replace('.', ',') + ' Mo' : Math.ceil(n / 1024) + ' Ko');
 const dateFr = new Date(manifest.generatedAt).toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+
+const skill = {
+  files: [
+    { href: '/skill/why-lang-skill.zip', file: 'why-lang-skill.zip', label: 'skill complète — SKILL.md + 6 exemples .wc', size: 9617, sha: 'c307b95cef258ed2b47e275c29b4896b4c906b5e0d4da3469437c61414e16c68' },
+    { href: '/skill/why-lang/SKILL.md', file: 'SKILL.md', label: 'fichier d’instruction seul', size: 15309, sha: 'ebe747915ec5689e0516a5f9d77dc722ebab503d54c995628642829bfa6be725' },
+  ],
+};
 ---
 <Doc locale="fr" title="Téléchargement">
   <p class="lead">
@@ -89,6 +96,43 @@ cp why "$HOME/.local/bin/"
     Comparez la somme SHA-256 affichée ci-dessus à celle du <code>.zip</code> téléchargé.
     Sur macOS/Linux : <code>shasum -a 256 why-darwin-arm64.zip</code> ; sur Windows : <code>Get-FileHash why-windows-amd64.zip -Algorithm SHA256</code>.
   </p>
+
+  <h2>Skill IA</h2>
+  <p>
+    Une skill est un fichier <code>SKILL.md</code> qu’un agent IA lit avant d’écrire du Why.
+    Elle encode les règles du langage — le modèle mémoire, ce qui n’existe pas — pour que le code
+    généré compile du premier coup. Installez-la dans le dossier des skills de votre agent,
+    ou lisez-la pour apprendre les idiomes. Voir aussi la <a href="/fr/ai-skill">page Skill IA</a>.
+  </p>
+  <table class="dl-table">
+    <thead>
+      <tr>
+        <th>Fichier</th>
+        <th>Contenu</th>
+        <th>Taille</th>
+        <th>SHA-256</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {skill.files.map((f) => (
+        <tr>
+          <td><code>{f.file}</code></td>
+          <td>{f.label}</td>
+          <td class="num">{fmt(f.size)}</td>
+          <td><code class="sha" title={`sha256: ${f.sha}`}>{f.sha}</code></td>
+          <td class="act"><a class="dl-btn" href={f.href} download={f.file} title={`Contient : ${f.label}`}>Télécharger</a></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <h3>Installer la skill</h3>
+  <p>Le <code>.zip</code> contient un dossier <code>why-lang/</code> prêt à l’emploi (<code>SKILL.md</code> + <code>examples/*.wc</code>) : décompressez, puis copiez-le dans le dossier des skills de votre agent.</p>
+  <pre><code># macOS / Linux
+unzip why-lang-skill.zip                 # → why-lang/
+mkdir -p "$HOME/.lmstudio/skills"
+cp -R why-lang "$HOME/.lmstudio/skills/"
+</code></pre>
 
   <div class="callout">
     <strong>Le projet n'est pas encore open source</strong>
