@@ -25,7 +25,7 @@ Le littéral `[]T{…}` vit dans le bloc `arena nom` et meurt avec lui. Sans ce 
 
 > `defer` exécutera l'appel à la sortie du bloc, avant la libération de l'arène. Il rend ce que C a alloué, parce que l'arène ne libère que ce qu'elle a créé.
 
-> `arena thread` lance un fil. L'accolade attend le fil avant la libération. Le fil a sa propre pile.
+> `arena thread` ouvre l'arène du fil sous le nom `thread`. Elle meurt quand le fil meurt. Le fil a sa propre pile.
 
 > `arena shared nom { … }` est une arène que deux fils lisent par `freeze` ou par canal. `nom.make` et `nom.append` restent sur le fil qui a ouvert le bloc.
 

@@ -23,7 +23,7 @@ The literal `[]T{…}` lives in the `arena name` block and dies with it. Without
 
 > `defer` will run the call at the exit of the block, before the release of the arena. It frees what C allocated, because the arena only frees what it created.
 
-> `arena thread` launches a thread. The brace waits for the thread before the release. The thread has its own stack.
+> `arena thread` opens the thread's arena under the name `thread`. It dies with the thread. The thread has its own stack.
 
 > `arena shared name { … }` is an arena that two threads read by `freeze` or by channel. `name.make` and `name.append` stay on the thread that opened the block.
 
